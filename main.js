@@ -4,6 +4,18 @@ async function getData(){
   const response = await fetch(url);
   const data = await response.json();
   console.log('data',data);
+  drawItems(data);
 }
-
 getData();
+
+const items = document.querySelector('.items')
+
+function drawItems(getData){
+  const dataItem = getData.items.item;
+
+  dataItem.forEach((item) => {
+    let div = document.createElement('div');
+    items.appendChild(div);
+    div.innerText = item.spot_nm
+  });
+}
